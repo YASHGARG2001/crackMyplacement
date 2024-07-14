@@ -1,0 +1,112 @@
+These are the solution to day 1 of crackmyplacement.
+
+Question 287 :
+ class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+       
+        int ans;
+         sort(nums.begin(),nums.end());
+         for(int i = 0 ;i< nums.size()-1;i++)
+         {
+            if(nums[i]== nums[i+1])
+            {
+               ans = nums[i];
+               break;
+            }
+         }
+         return ans;
+    }
+};
+
+Question : 75 sort color 
+ class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int zero,one,two ;
+        zero = 0  ;
+        one = 0 ;
+        two= 0 ;
+        for(int i = 0 ;i<nums.size();i++)
+        {
+            if(nums[i]==0)
+            {
+                zero++; 
+            }
+            else if(nums[i]==1)
+            {
+                one++;
+            }
+            else 
+            {
+                two++;
+            }
+
+        }
+        nums.clear();
+        while(zero > 0 )
+        {
+            nums.push_back(0);
+            zero--;
+        }
+        while(one > 0 )
+        {
+            nums.push_back(1);
+            one--;
+        }
+        while(two > 0 )
+        {
+            nums.push_back(2);
+            two--;
+        }
+    
+    }
+};
+
+Question  1 :
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> anns ;
+         for(int i = 0 ;i< nums.size();i++)
+         {
+            for(int j = i+1;j< nums.size();j++)
+            {
+                 if(nums[i]+nums[j]== target)
+                  {
+                    anns.push_back(i);
+                    anns.push_back(j);
+                    break ;
+
+                  }
+            }
+         }
+         return anns;
+    }
+};
+
+question 20 :
+class Solution {
+public:
+    bool isValid(string s) {
+      std::stack<char> st;
+
+        for (char c : s) {
+            if (c == '(' || c == '{' || c == '[') {
+                st.push(c);  
+            } else {
+                if (st.empty()) {
+                    return false; 
+                }
+                
+                char top = st.top();
+                if ((c == ')' && top == '(') || (c == '}' && top == '{') || (c == ']' && top == '[')) {
+                    st.pop();  
+                } else {
+                    return false;                  }
+            }
+        }
+
+        return st.empty(); 
+    }
+};
