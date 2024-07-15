@@ -1,0 +1,104 @@
+Here are my answer  to the question from Arsh DSA Sheet 
+  
+  Question 876
+     class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        int count = 0 ;
+         ListNode * ptr = head ;
+         while(ptr !=nullptr)
+         {
+            count ++;
+            ptr = ptr ->next ;
+         }
+         int n = count /2;
+         while(n>0)
+         {
+            head = head->next ;
+            n--;
+         }
+        return head ;
+    }
+};
+
+Question 141 
+   class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head == nullptr || head ->next == nullptr  )
+        {
+            return false ;
+        }
+        ListNode * slow = head ;
+        
+        ListNode * fast = head -> next ;
+        while(fast!=nullptr && fast->next != nullptr )
+        {
+            if(slow == fast )
+            {
+                return true;
+            }
+            slow = slow ->next;
+            fast = fast ->next ;
+            if(fast->next != nullptr )
+            {
+                fast = fast -> next ;
+            }
+        }
+        return false ;
+        
+    }
+};
+Question 1290 
+  class Solution {
+public:
+    int getDecimalValue(ListNode* head) {
+        int count  = 0 ;
+        ListNode * ptr = head ;
+        while(ptr != nullptr)
+        {
+            count++;
+            ptr = ptr ->next ;
+
+        }
+        count--;
+    
+        int number=0;
+        ListNode * ptr1= head ;
+        while(ptr1!= nullptr )
+        {
+            int n = ptr1->val;
+             number =   number + n* pow(2,count);
+             count--;
+             ptr1= ptr1->next;
+        }
+        return number ;
+    }
+};
+question 67 
+  class Solution {
+public:
+    string addBinary(string a, string b) {
+       int n = a.size();
+        int m = b.size();
+        int carry = 0;
+        string result = "";
+        
+        
+        while (n > 0 || m > 0 || carry > 0) {
+        
+            int numA = (n > 0) ? (a[--n] - '0') : 0;
+            int numB = (m > 0) ? (b[--m] - '0') : 0;
+            
+         
+            int sum = numA + numB + carry;
+            
+            result = to_string(sum % 2) + result;
+            
+            carry = sum / 2;
+        }
+        
+        return result;
+    }
+};
+  
