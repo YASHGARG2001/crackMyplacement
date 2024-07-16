@@ -1,0 +1,82 @@
+Here are the code for the day 3 rth with crackmyplacemnt
+   Question : Product Array Product 
+      class Solution{
+  public:
+    // nums: given vector
+    // return the Product vector P that hold product except self at each index
+    vector<long long int> productExceptSelf(vector<long long int>& nums, int n) {
+        vector<long long int> finalAns;
+         long long int ans;
+        for(int i = 0 ;i< nums.size();i++)
+        {
+             ans = 1;
+            for(int j = 0 ; j< nums.size();j++)
+            {
+                if(i!=j)
+                {
+                    ans = ans * nums[j];  
+                }
+            }
+            
+            finalAns.push_back(ans);
+        }
+          
+          return finalAns;
+    }
+};
+
+ Question 442 
+   class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int>ans ;
+        vector<int>check(nums.size());
+        check ={0};
+        for(int i = 0 ;i<nums.size();i++)
+        {
+              if(check[nums[i]-1] == 1)
+              {
+                ans.push_back(nums[i]);
+              }
+            else 
+            {
+                check[nums[i]-1]= 1;
+            }
+        }
+        return ans;
+    }
+};
+Question 234
+
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        vector<int> ans ;
+       ListNode * ptr = head ;
+       while(ptr!= nullptr )
+       {
+        ans.push_back(ptr->val);
+        ptr= ptr ->next ;
+       }
+       
+       int i = 0 ;
+       int j =ans.size()-1;
+        while(i<j)
+        {
+            if(ans [i]!= ans[j])
+            {
+                return false ;
+            }
+            else 
+            {
+                i++;
+                j--;
+            }
+        }
+        return true;
+        
+    }
+};
+
+question 4 
+gfg article Print all the duplicate characters in a string
