@@ -1,0 +1,53 @@
+here is the progress of day 06 
+
+question 26 
+ class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+  int j=1;
+        for(int i=0;i<nums.size()-1;i++)
+        {
+            if(nums[i]!=nums[i+1])
+            {
+                nums[j]=nums[i+1];
+                  j++;
+                  }
+             
+        }
+        return j;
+    }
+};
+ question 206 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+          if (head == nullptr) // Handle the case of an empty list
+            return nullptr;
+            ListNode* temp1 = nullptr;
+        ListNode* temp2 = head;
+        
+          ListNode* temp3 = nullptr;
+        
+        while (temp2 != nullptr) {
+
+            temp3= temp2->next;
+            temp2->next = temp1;
+            temp1 = temp2;
+            temp2 = temp3;
+            
+        }
+        
+        return temp1;;
+        
+    }
+};
