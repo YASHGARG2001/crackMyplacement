@@ -1,0 +1,93 @@
+here are the code from day 10 
+  question 160
+   #include <unordered_set>
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        int lenA = getLength(headA);
+        int lenB = getLength(headB);
+        
+    
+        if (lenA > lenB) {
+            int diff = lenA - lenB;
+            while (diff-- > 0)
+                headA = headA->next;
+        } else {
+            int diff = lenB - lenA;
+            while (diff-- > 0)
+                headB = headB->next;
+        }
+        
+    
+        while (headA != nullptr && headB != nullptr && headA != headB) {
+            headA = headA->next;
+            headB = headB->next;
+        }
+        
+        return headA; 
+    }
+    
+    
+    int getLength(ListNode* head) {
+        int len = 0;
+        while (head != nullptr) {
+            len++;
+            head = head->next;
+        }
+        return len;
+    }
+};
+
+question 232 
+  include <stack>
+
+class MyQueue {
+private:
+    std::stack<int> stack1, stack2;
+
+    
+    void transferStack1ToStack2() {
+        while (!stack1.empty()) {
+            stack2.push(stack1.top());
+            stack1.pop();
+        }
+    }
+
+public:
+    MyQueue() {
+        
+    }
+    
+    void push(int x) {
+        stack1.push(x);
+    }
+    
+    int pop() {
+        if (stack2.empty()) {
+            transferStack1ToStack2();
+        }
+        int top = stack2.top();
+        stack2.pop();
+        return top;
+    }
+    
+    int peek() {
+        if (stack2.empty()) {
+            transferStack1ToStack2();
+        }
+        return stack2.top();
+    }
+    
+    bool empty() {
+        return stack1.empty() && stack2.empty();
+    }
+};
