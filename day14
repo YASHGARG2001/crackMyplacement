@@ -1,0 +1,26 @@
+question 121
+  #include <vector>
+#include <algorithm> // For std::max
+
+class Solution {
+public:
+    int maxProfit(std::vector<int>& prices) {
+        if (prices.empty()) return 0;
+
+        int minPrice = prices[0];
+        int maxProfit = 0;
+
+        for (int i = 1; i < prices.size(); ++i) {
+            int currentPrice = prices[i];
+            int profit = currentPrice - minPrice;
+            
+            // Update maxProfit if current profit is greater
+            maxProfit = std::max(maxProfit, profit);
+            
+            // Update minPrice if current price is lower
+            minPrice = std::min(minPrice, currentPrice);
+        }
+
+        return maxProfit;
+    }
+};
